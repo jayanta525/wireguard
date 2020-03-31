@@ -34,7 +34,7 @@ fi
 
 #Turn down interface
 
-wg down $SERVER_WG_NIC
+wg-quick down $SERVER_WG_NIC
 
 CLIENT_PRIV_KEY=$(wg genkey)
 CLIENT_PUB_KEY=$(echo "$CLIENT_PRIV_KEY" | wg pubkey)
@@ -55,7 +55,7 @@ PublicKey = $SERVER_PUB_KEY
 Endpoint = $ENDPOINT
 AllowedIPs = 0.0.0.0/0,::/0" >> "$HOME/$SERVER_WG_NIC-client-$CLIENT.conf"
 
-wg up $SERVER_WG_NIC
+wg-quick up $SERVER_WG_NIC
 
 echo -e "\nHere is your client config file as a QR Code:"
 
