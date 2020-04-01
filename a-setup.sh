@@ -103,6 +103,7 @@ DNS = $CLIENT_DNS_1,$CLIENT_DNS_2" > "$HOME/$SERVER_WG_NIC-client.conf"
 echo "[Peer]
 PublicKey = $SERVER_PUB_KEY
 Endpoint = $ENDPOINT
+PersistentKeepalive = 21
 AllowedIPs = 0.0.0.0/0,::/0" >> "$HOME/$SERVER_WG_NIC-client.conf"
 
 echo "net.ipv4.ip_forward = 1
