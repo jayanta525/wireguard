@@ -3,6 +3,7 @@ read CLIENT
 
 CLIENT_ID=$(cat client.ipv4)
 TEMP=$((CLIENT_ID++))
+echo "$CLIENT_ID" > client.ipv4
 
 SERVER_PUB_KEY=$(cat server.pub)
 
