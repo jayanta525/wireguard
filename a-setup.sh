@@ -113,6 +113,8 @@ sysctl --system
 systemctl start "wg-quick@$SERVER_WG_NIC"
 systemctl enable "wg-quick@$SERVER_WG_NIC"
 
+wg-quick $SERVER_WG_NIC up
+
 echo -e "\nHere is your client config file as a QR Code:"
 
 qrencode -t ansiutf8 -l L < "$HOME/$SERVER_WG_NIC-client.conf"
