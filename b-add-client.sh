@@ -1,6 +1,11 @@
 echo "Enter Client Name: "
 read CLIENT
 
+CLIENT_ID=$(cat client.ipv4)
+TEMP=$((CLIENT_ID++))
+
+SERVER_PUB_KEY=$(cat server.pub)
+
 SERVER_PUB_IPV4=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 read -rp "IPv4 or IPv6 public address: " -e -i "$SERVER_PUB_IPV4" SERVER_PUB_IP
 
@@ -10,10 +15,10 @@ read -rp "WireGuard interface name: " -e -i "$SERVER_WG_NIC" SERVER_WG_NIC
 SERVER_PORT=53
 read -rp "Server's WireGuard port " -e -i "$SERVER_PORT" SERVER_PORT
 
-CLIENT_WG_IPV4="10.66.66.3"
+CLIENT_WG_IPV4="10.66.66.$CLIENT_ID"
 read -rp "Client's WireGuard IPv4 " -e -i "$CLIENT_WG_IPV4" CLIENT_WG_IPV4
 
-CLIENT_WG_IPV6="fd42:42:42::3"
+CLIENT_WG_IPV6="fd42:42:42::$CLIENT_ID"
 read -rp "Client's WireGuard IPv6 " -e -i "$CLIENT_WG_IPV6" CLIENT_WG_IPV6
 
 # Adguard DNS by default
