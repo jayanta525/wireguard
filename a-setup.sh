@@ -69,6 +69,8 @@ fi
 SERVER_PRIV_KEY=$(wg genkey)
 SERVER_PUB_KEY=$(echo "$SERVER_PRIV_KEY" | wg pubkey)
 
+echo "$SERVER_PUB_KEY" > server.pub
+
 # Generate key pair for the server
 CLIENT_PRIV_KEY=$(wg genkey)
 CLIENT_PUB_KEY=$(echo "$CLIENT_PRIV_KEY" | wg pubkey)
