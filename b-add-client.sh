@@ -58,6 +58,7 @@ DNS = $CLIENT_DNS_1,$CLIENT_DNS_2" > "$HOME/$SERVER_WG_NIC-client-$CLIENT.conf"
 echo "[Peer]
 PublicKey = $SERVER_PUB_KEY
 Endpoint = $ENDPOINT
+PersistentKeepalive = 21
 AllowedIPs = 0.0.0.0/0,::/0" >> "$HOME/$SERVER_WG_NIC-client-$CLIENT.conf"
 
 wg-quick up $SERVER_WG_NIC
